@@ -16,7 +16,11 @@ This tool was created to find similiar vulnerabilities in other programs and ser
 
 # Features
 This tool scans registery keys under Local Machine (HKLM) and lists out any keys non-admins have access to create symbolic links in.
-With the list developers and security enthusiasts may search for similar vulnerabilities in their systems Steam had prior to Aug 13th 2019 patch.
+
+With the list developers and security enthusiasts may search for similar vulnerabilities in their systems Steam had prior to Aug 13th 2019 patch. The listed results don't mean the subkeys are vulnerable; that depends on the services and programs using those keys. However, the keys are still potential candidates where one could look for security issues.
+
+# Further vulnerability testing
+To test the listed keys further, you may use an event viewer such as SystemInternals ProcMon to see how a service or program uses the subkeys. If you detect the subkey permissions being changed, try replacing the registery key with a symbolic link using a 3rd party tool and see if the service/program is fooled to edit the target key instead. If so, you can see how that behaviour could be used to achieve privilege escalation from the Steam PoC.
 
 # Usage
 RegSlScan is intended to be run from a commandline console.
