@@ -43,7 +43,10 @@ bool QueryKey(HKEY hKey, const PTRUSTEEW usersGroup, const std::wstring& path) {
 	if (GetEffectiveRightsFromAclW(pdacl, usersGroup, &accessMask) == ERROR_SUCCESS &&
 		accessMask & KEY_CREATE_LINK) {
 
-		std::wcout << path << std::endl;
+		if ((accessMask & KEY_WRITE) == KEY_WRITE)
+			std::wcout << path << L" (writeable)" << std::endl;
+		else
+			std::wcout << path << L" (link only)" << std::endl;
 
 		free(secDesc);
 		return true;
