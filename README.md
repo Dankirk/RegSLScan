@@ -20,7 +20,7 @@ This tool scans registery keys under Local Machine (HKLM) and lists out any keys
 With the list developers and security enthusiasts may search for similar vulnerabilities in their systems Steam had prior to Aug 13th 2019 patch. The listed results don't mean the subkeys are vulnerable; that depends on the services and programs using those keys. However, the keys are still potential candidates where one could look for security issues.
 
 # Further vulnerability testing
-To test the listed keys further, you may use an event viewer such as SystemInternals ProcMon to see how a service or program uses the subkeys. If you detect the subkey permissions being changed, try replacing the registery key with a symbolic link using a 3rd party tool and see if the service/program is fooled to edit the target key instead. If so, you can see how that behaviour could be used to achieve privilege escalation from the Steam PoC.
+To test the listed keys further, you may use an event viewer such as SysInternals ProcMon to see how a service or program uses the subkeys. If you detect the subkey permissions being changed, similiar to Steam case, you can try replacing the registery key with a symbolic link using a 3rd party tool and see if the service/program is fooled to edit the target key instead. If so, you can see how that behaviour could be used to achieve privilege escalation from the Steam PoC.
 
 # Usage
 RegSlScan is intended to be run from a commandline console.
@@ -31,7 +31,8 @@ RegSlScan.exe
 RegSlScan.exe Software\Valve
 ```
 
-If no commandline parameters are given. RegSLScan scans all subkeys in Local Machine (HKLM) recursively.
+If no commandline parameters are given RegSLScan scans all subkeys in Local Machine (HKLM) recursively.
+
 If a parameter such as "Software\Valve" is given, the speficied key (under HKLM) and it's subkeys are scanned instead.
 
 
