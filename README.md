@@ -4,7 +4,7 @@ A command line tool for scanning registery key permissions.
 Made by Henri Aho with Microsoft Visual Studio Community Edition 2017.
 
 # Background
-This tool was inspired by a recent Steam local privilege escalation issue patched in Aug 13th 2019.
+This tool was inspired by a recent [Steam local privilege escalation issue](https://amonitoring.ru/article/steamclient-0day/) patched in Aug 13th 2019.
 
 The issue was caused by a background service, Steam Client Service, that on startup gave non-admins 
 full access to ```HKLM\Software\Valve\Steam``` and it's subkeys. Users could delete one of the subkeys
@@ -20,7 +20,7 @@ This tool scans registery keys under Local Machine (HKLM) and lists out any keys
 With the list developers and security enthusiasts may search for similar vulnerabilities in their systems Steam had prior to Aug 13th 2019 patch. The listed results don't mean the subkeys are vulnerable; that depends on the services and programs using those keys. However, the keys are still potential candidates where one could look for security issues.
 
 # Further vulnerability testing
-To test the listed keys further, you may use an event viewer such as SysInternals ProcMon to see how a service or program uses the subkeys. If you detect the subkey permissions being changed, similiar to Steam case, you can try replacing the registery key with a symbolic link using a 3rd party tool and see if the service/program is fooled to edit the target key instead. If so, you can see how that behaviour could be used to achieve privilege escalation from the Steam PoC.
+To test the listed keys further, you may use an event viewer such as [SysInternals ProcMon](https://docs.microsoft.com/en-us/sysinternals/downloads/procmon) to see how a service or program uses the subkeys. If you detect the subkey permissions being changed, similiar to Steam case, you can try replacing the registery key with a symbolic link using a 3rd party tool and see if the service/program is fooled to edit the target key instead. If so, you can see how that behaviour could be used to achieve privilege escalation from [Steam PoC](https://gist.github.com/enigma0x3/03f065be011c5980b96855e2741bf302).
 
 # Usage
 RegSlScan is intended to be run from a commandline console.
